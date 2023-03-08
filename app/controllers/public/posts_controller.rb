@@ -15,13 +15,15 @@ class Public::PostsController < ApplicationController
   end
   
   def index
-    @post = post.new
+    @post = Post.new
     @user = current_user
+    @posts = Post.all
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @posts = Post.all
     @new_post = Post.new
     @post_comment = PostComment.new
   end
