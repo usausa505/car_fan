@@ -9,8 +9,8 @@
 
 <%= form_with model: post,local: true do |f| %>
   <div class="form-group">
-    <p>画像</p>
-    <%= f.file_field :image, accept: 'image/*', class: 'form-control book_body' %>
+    <%= f.label "画像" %>
+    <%= f.file_field :image, class: 'form-control-file user_image', accept: 'image/*' %>
   </div>
   <div class="form-group">
     <%= f.label "タイトル" %>
