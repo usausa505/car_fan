@@ -11,7 +11,7 @@
   		<table class='table'>
   		  <tr>
           <td>
-            <%= link_to(@post.user) do %>
+            <%= link_to(@user_id) do %>
               <%= image_tag @post.user.get_profile_image, size:"50x50" %><br>
               <%= @post.user.name %>
             <% end %>

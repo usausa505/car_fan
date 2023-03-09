@@ -9,16 +9,17 @@
   </thead>
   <tbody>
     <% posts.each do |post| %>
+    <!--↑上記postsはrenderのインスタンス変数で対応、以下postは|post|によって対応-->
       <tr>
         <td>
           <%= link_to(post.user) do %>
-            <%= image_tag post.user.get_profile_image, size:'20x20' %>
+            <%= image_tag post.user.get_profile_image, size:'30x30' %>
           <% end %>
         </td>
         <td>
           <% if post.images.attached? %>
             <% post.images.each_with_index do |image, i| %>
-              <%= image_tag post.get_image[i], size:'20x20' %>
+              <%= image_tag post.get_image[i], size:'50x50' %>
             <% end %>
           <% end %>
         </td>
