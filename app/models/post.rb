@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   validates :title, presence:true, length: {maximum:50}
   validates :body, presence:true, length: {maximum:200}
   
-  FILE_NUMBER_LIMIT = 3
+  FILE_NUMBER_LIMIT = 4
 
   validate :validate_number_of_files
   

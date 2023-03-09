@@ -2,8 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
-    # @user = User.find(current_user.id)
-    @user = User.find(params[:user_id]) #←これだとエラーになる
+    @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
     @posts = @user.posts
     @post = Post.new
   end
