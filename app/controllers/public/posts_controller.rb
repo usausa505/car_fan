@@ -24,7 +24,6 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @posts = Post.all
-    @new_post = Post.new
     @post_comment = PostComment.new
   end
 
@@ -50,7 +49,7 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, images: [])
   end
   
   def is_matching_login_user_on_post

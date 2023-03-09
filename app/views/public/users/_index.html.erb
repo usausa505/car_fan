@@ -9,10 +9,10 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        
+        <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
+        <td><a href="users/:user_id/my_page">show</a></td>
 
-        
       </tr>
     <% end %>
   </tbody>
