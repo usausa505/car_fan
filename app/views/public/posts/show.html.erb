@@ -16,7 +16,7 @@
               <%= @post.user.name %>
             <% end %>
           </td>
-          <td><%= image_tag @post.get_image[0], size:'80X80' %></td>
+          <td><%= image_tag @post.get_image[0], size:'80x80' %></td>
           <td><%= link_to @post.title, @post %></td>
           <td><%= @post.body %></td>
           <% if @post.user == current_user %>
