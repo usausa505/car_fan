@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+
   before_action :is_matching_login_user_on_post, only: [:edit, :update, :destroy]
 
   def create
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       render "index"
     end
   end
-  
+
   def index
     @post = Post.new
     @user = current_user
@@ -22,6 +22,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @new_post = Post.new
     @user = @post.user
     @posts = Post.all
     @post_comment = PostComment.new
@@ -39,19 +40,19 @@ class Public::PostsController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "投稿の削除に成功しました！"
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:title, :body, images: [])
   end
-  
+
   def is_matching_login_user_on_post
     @post = Post.find(params[:id])
     @user = @post.user

@@ -1,8 +1,8 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
+      <th>プロフィール画像</th>
+      <th>ネーム</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
-        <td><a href="users/:user_id/my_page">show</a></td>
+        <td><a href=<%= "users/#{user.id}/my_page" %>>show</a></td>
 
       </tr>
     <% end %>

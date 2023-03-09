@@ -15,10 +15,16 @@
             <%= image_tag post.user.get_profile_image, size:'50x50' %>
           <% end %>
         </td>
-        <td><%= image_tag post.get_image[0], size:'80x80' %></td>
+        <td>
+          <% if @post.images.attached? %>
+            <% @post.images.each do |image| %>
+              <%= image_tag @post.get_image[0], size:'80x80' %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to post.title, post %></td>
         <td><%= post.body %></td>
-
+        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
 
       </tr>
     <% end %>
