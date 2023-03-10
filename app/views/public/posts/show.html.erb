@@ -20,7 +20,7 @@
             <% if @post.images.attached? %>
               <% @post.images.each_with_index do |image, i| %>
               <!--each_with_indexメソッドはeachループで回しつつ、それぞれのデータに番号を振りたいときに使うもの-->
-                <%= image_tag @post.get_image[i], size:'80x80' %> 
+                <%= image_tag @post.get_image[i], size:'80x80' %>
               <% end %>
             <% end %>
           </td>
