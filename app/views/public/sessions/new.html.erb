@@ -1,24 +1,32 @@
 <div class="container text-center", style="padding-top:70px; padding-bottom:70px;">
-    <div class="btn-wrapper col-3 mx-auto">
-      <h2><b>ログイン画面</b></h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
-        </div>
-          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control" %>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit "ログイン", class: 'btn btn-primary' %>
+  <div class="btn-wrapper col-3 mx-auto">
+    <h2><b>ログイン画面</b></h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field", style="padding-top:20px;">
+        <%= f.label "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+      </div>
+      <div class="field", style="padding-top:20px;">
+        <%= f.label "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control" %>
+      </div>
+      
+      <% if devise_mapping.rememberable? %>
+        <div class="field", style="padding-top:20px;">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
         </div>
       <% end %>
-    </div>
-      <%= render "public/shared/links" %>
+
+      <div class="actions", style="padding-top:20px;">
+        <%= f.submit "ログイン", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="text-right text-danger", style="padding-right:100px; padding-bottom:70px;">
+  <h5><b>会員登録がまだの方はこちらへ</b>
+    <i class="fas fa-hand-point-right"></i>
+    <%= render "public/shared/links" %>
+  </h5>
 </div>
