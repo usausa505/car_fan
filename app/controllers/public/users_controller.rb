@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(10)
     @post = Post.new
   end
 

@@ -12,7 +12,7 @@
     <!--↑上記postsはrenderのインスタンス変数で対応、以下postは|post|によって対応-->
       <tr>
         <td>
-          <%= link_to(post.user) do %>
+          <%= link_to user_my_page_path(post.user) do %>
             <%= image_tag post.user.get_profile_image, size:'30x30' %>
           <% end %>
         </td>
@@ -31,5 +31,6 @@
 
       </tr>
     <% end %>
+    <%= paginate posts %>
   </tbody>
 </table>

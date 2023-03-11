@@ -1,10 +1,10 @@
 <div class='container'>
   <div class='row', style="padding-top:100px;">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>プロフィール編集</h2>
       <% if @user.email == 'guest@sample.com'%>
-        <h2><b>ゲストユーザーはユーザー情報の編集ができません。</b></h2>
+        <h2 style="color:red;"><b>ゲストユーザーはユーザー情報の編集ができません。</b></h2>
       <% else %>
+        <h2>プロフィール編集</h2>
         <%= form_with model: @user, local:true do |f| %>
           <%= render 'layouts/errors', obj: @user %>
           <div class="form-group">
