@@ -11,7 +11,8 @@
   		<table class='table'>
   		  <tr>
           <td>
-            <%= link_to(@post.user) do %> <!--この記述だと遷移先でエラーが起きる-->
+            <%= link_to user_my_page_path(@post.user) do %>
+            <!--@post.userのままだと、users/1となりエラーになるので、今回のusers#showであるuser_my_page_pathを挟む必要がある-->
               <%= image_tag @post.user.get_profile_image, size:"50x50" %><br>
               <%= @post.user.name %>
             <% end %>

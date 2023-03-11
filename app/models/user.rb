@@ -34,4 +34,12 @@ class User < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@sample.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = "ゲストユーザー"
+    end
+  end
+
 end

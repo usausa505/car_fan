@@ -51,12 +51,12 @@
               <% end %>
             </li>
             <li class="nav-item nav-link">
-              <%= link_to posts_path, class:"link btn btn-warning" do %>
-                <i class="fas fa-hand-point-right"></i> 投稿一覧
+              <%= link_to users_guest_sign_in_path, method: :post, class: "link btn btn-warning form-contol" do %>
+                <i class="fas fa-hand-point-right"></i> ゲストログイン
               <% end %>
             </li>
             <li class="nav-item nav-link">
-              <%= link_to new_user_registration_path, class:"link btn btn-success" do %>
+              <%= link_to new_user_registration_path, class: "link btn btn-success" do %>
                 <i class="fas fa-user-plus"></i> 新規登録
               <% end %>
             </li>
