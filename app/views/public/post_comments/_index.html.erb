@@ -1,6 +1,14 @@
-<table>
+<table class="table">
   <tbody>
       <% post.post_comments.each do |post_comment| %>
+      <tr>
+        <% if post.images.attached? %>
+          <% post.images.each_with_index do |image, i| %>
+            <%= image_tag post.get_image[i], size:'50x50' %>
+          <% end %>
+        <% end %>
+        <!--この記述だとなぜかプロフィール画像が表示されてしまう-->
+      </tr>
       <tr>
         <td>
           <%= link_to user_my_page_path(post_comment.user) do %>
@@ -11,7 +19,8 @@
         <td><%= post_comment.comment %></td>
         <td>
           <% if post_comment.user == current_user %>
-            <%= link_to "削除する", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
+            <%= link_to "削除する", post_post_comment_path(post, post_comment), method: :delete, remote: true,
+            data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right" %>
           <% end %>
         </td>
       </tr>
