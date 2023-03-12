@@ -22,6 +22,9 @@
           <div class="form-group">
             <%= f.submit "更新する", class: 'btn btn-success' %>
           </div>
+          <div class="form-group">
+            <a class="btn btn-danger" data-method="get" href="<%= confirm_withdraw_users_path(id: @user.id) %>">退会する</a>
+          </div>
         <% end %>
       <% end %>
     </div>

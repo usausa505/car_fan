@@ -33,10 +33,21 @@ class Public::UsersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
+  def confirm_withdraw
+    @user = User.find(params[:id])
+  end
+
+  def withdraw
+    @User = User.find_by(email: params[:email])
+    @User.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)
   end
 
   def ensure_correct_user

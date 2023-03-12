@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class='row', style="padding-top:120px;">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <div class="my-5">
+        <h1 class="text-center", style="color:red;">
+          <b>
+            退会を実行しますか？
+          </b>
+        </h1>
+      </div>
+      <div class="my-5">
+        <h4>
+          <b>
+            退会を行った場合、このアカウントでのログインができなくなります。<br>
+            そのため、再度アカウント登録が必要となります。<br>
+          </b>
+        </h4>
+      </div>
+      <div class="container text-center my-5">
+        <div class="row text-center">
+          <div class="form-inline text-center mx-auto">
+            <a class="btn btn-primary" data-method="get" href="<%= user_my_page_path(current_user) %>">退会しない</a>
+          </div>
+          <div class="form-inline text-center mx-auto">
+            <a class="btn btn-danger" data-method="patch" href="<%= withdraw_users_path(email: @user.email) %>">退会する</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
