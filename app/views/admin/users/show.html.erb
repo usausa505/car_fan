@@ -1,2 +1,21 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div style="padding-top:70px; padding-bottom:70px;">
+     <table class='table'>
+        <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
+        <tr>
+      	  <th>名前</th>
+      	  <th><%= @user.name %></th>
+        </tr>
+        <tr>
+	        <th>自己紹介</th>
+       	  <th><%= @user.introduction %></th>
+        </tr>
+        <th>会員ステータス</th>
+          <% if @user.is_deleted == false %>
+            <td><h5 class="text-success font-weight-bold">有効</h5></td>
+          <% else %>
+            <td><h5 class="font-weight-bold" style="color: gray">退会</h5></td>
+          <% end %>
+        </th>
+      </table>
+      <td><%= link_to "　編集する　", edit_admin_user_path(@user.id), class: 'btn btn-success' %></td>
+</div>

@@ -34,11 +34,10 @@ class Public::UsersController < ApplicationController
   end
 
   def confirm_withdraw
-    @user = User.find(params[:id])
   end
 
   def withdraw
-    @User = User.find_by(email: params[:email])
+    @User = current_user
     @User.update(is_deleted: true)
     reset_session
     redirect_to root_path

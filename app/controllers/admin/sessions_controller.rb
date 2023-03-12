@@ -27,7 +27,7 @@ class Admin::SessionsController < Devise::SessionsController
       elsif current_admin
         admin_root_path
       else
-        users_my_page_path  #　指定したいパスに変更
+        uses_my_page_path  #　指定したいパスに変更
       end
   end
 

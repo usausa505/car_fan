@@ -35,10 +35,12 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    resource :users, only: [] do
-      get "confirm_withdraw"=>"users#confirm_withdraw"
-      patch "withdraw"=>"users#withdraw"
-    end
+    #退会機能のルーティング(ルーティングが混同しないように、resourceより上に持ってきた)
+    get "confirm_withdraw"=>"users#confirm_withdraw"
+    patch "withdraw"=>"users#withdraw"
+
+    resource :users, only: []
+
   end
 
 

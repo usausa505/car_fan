@@ -1,2 +1,19 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div style="padding-top:70px; padding-bottom:70px;">
+      <%= form_with model: @user, url: admin_user_path, method: :patch, local:true do |f| %>
+      <%= render 'layouts/errors', obj: @user %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <%= f.radio_button :is_deleted, :false %>
+                <%= f.label :"有効" %>
+                <%= f.radio_button :is_deleted, :true %>
+                <%= f.label :"退会" %>
+              </td>
+            </tr>
+          <td><%= f.submit "  変更を保存  ", class: 'btn btn-success' %></td>
+          </tbody>
+        </table>
+      <% end %>
+</div>

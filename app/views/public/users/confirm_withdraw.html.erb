@@ -22,7 +22,7 @@
             <a class="btn btn-primary" data-method="get" href="<%= user_my_page_path(current_user) %>">退会しない</a>
           </div>
           <div class="form-inline text-center mx-auto">
-            <a class="btn btn-danger" data-method="patch" href="<%= withdraw_users_path(email: @user.email) %>">退会する</a>
+            <%= link_to "退会する", withdraw_path , method: :patch, class:"btn btn-danger" %>
           </div>
         </div>
       </div>
