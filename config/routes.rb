@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  devise_scope :user do
+  devise_scope :user do #ゲストログイン機能
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
     #to以降の見方：publicというcontrollerファイルの、sessionという名前の、guest_sign_inメソッドを参照するという意味
     #例えばpulicの部分をusersと記述してしまうと、存在しないファイルを参照するためエラーが生じるので注意！
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index,:edit,:update] do
       get "my_page"=>"users#show"
+      #一覧表示機能
+      member do
+        get :favorites
+      end
       # 以下フォロー機能の実装
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
