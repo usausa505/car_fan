@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :profile_image
-  
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
@@ -17,6 +17,22 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: {maximum: 50}
+
+  def self.looks(search, word)
+    if search == "perfect"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+
+
 
   def follow(user_id)
     relationships.create(followed_id: user_id)

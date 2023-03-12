@@ -15,6 +15,22 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
 
+  def self.looks(search, word)
+    if search == "perfect"
+      @post = Post.where("title LIKE?","#{word}")
+    elsif search == "forward"
+      @Post = Post.where("title LIKE?","#{word}%")
+    elsif search == "backward"
+      @Post = Post.where("title LIKE?","%#{word}")
+    elsif search == "partial"
+      @Post = Post.where("title LIKE?","%#{word}%")
+    else
+      @Post = Post.all
+    end
+  end
+
+
+
   def get_image
     unless images.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

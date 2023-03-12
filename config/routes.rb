@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    get "search" => "searches#search"
     resources :posts, only: [:show, :index, :edit, :destroy] # destroyは不適切な投稿を削除するためのモノ
     resources :users, only: [:index,:show,:edit,:update] # updateはユーザーステータスを変更するためのモノ
   end
