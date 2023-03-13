@@ -6,7 +6,7 @@
       <h2 class="mt-3">新規投稿</h2>
       <%= render 'public/posts/form', post: @post %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-9'> <!--前まで設定していたoffse-md-1は空白を開けるための記述である(現在は削除済)-->
       <h2>ユーザー一覧</h2>
       <%= render 'index', users: @users %>
     </div>
