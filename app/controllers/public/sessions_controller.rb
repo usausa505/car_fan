@@ -36,9 +36,9 @@ class Public::SessionsController < Devise::SessionsController
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@user
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    #if @customer.valid_password?(params[:customer][:password]) && !@customer.status
+    #if @user.valid_password?(params[:user][:password]) && !@user.status
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
-      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      flash[:notice] = "退会もしくは利用停止済みです。再度ご登録をしてご利用ください。"
       redirect_to new_user_session_path
       ## 【処理内容3】falseではなくtrueだった場合にサインアップページにリダイレクトする
     end
