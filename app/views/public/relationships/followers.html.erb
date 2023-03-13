@@ -1,0 +1,29 @@
+<div style="padding-top:120px; padding-bottom:70px;">
+  <table class="table table-hover table-inverse">
+    <h1>Follow Users</h1>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @users.exists? %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+            <td><%= user.name %></td>
+            <td>フォロー数: <%= user.followings.count %></td>
+            <td>フォロワー数: <%= user.followers.count %></td>
+            <td><%= render 'public/relationships/follow_form', user: user %></td>
+            <td><a href=<%= "/users/#{user.id}/my_page" %>>show</a></td>
+            <!--URLの前に/を入れないと現在のURLに重なって表示されてしまうので注意！-->
+          </tr>
+        <% end %>
+      <% else %>
+        <p>ユーザーはいません</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>

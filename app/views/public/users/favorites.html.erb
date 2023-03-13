@@ -17,6 +17,7 @@
           <td>
             <%= link_to user_my_page_path(post.user) do %>
               <%= image_tag post.user.get_profile_image, size:'50x50' %>
+              <%= post.user.name %>
             <% end %>
           </td>
           <td>
