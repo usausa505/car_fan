@@ -24,6 +24,7 @@
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               <% end %>
             </li>
+            <li class="nav-item nav-link"><%= render 'admin/searches/search' %></li>
           <% elsif user_signed_in? %>
             <li class="nav-item nav-link">
               <%= link_to user_my_page_path(current_user), class:"link btn btn-info" do %>

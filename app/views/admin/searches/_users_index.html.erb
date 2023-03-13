@@ -1,15 +1,13 @@
-<div style="padding-top:120px; padding-bottom:70px;">
-  <h2>投稿一覧</h2>
-  <table class='table table-hover table-inverse'>
-    <thead>
-      <tr>
-        <th>プロフィール画像</th>
-        <th>ユーザーネーム</th>
-        <th>詳細ページへ</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>ユーザーネーム</th>
+      <th>詳細ページへ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image, size: '100x100' %></td>
         <td><%= user.name %></td>
@@ -17,8 +15,5 @@
         <!--以前の設定ではusers/user.id/my_pageと設定していたが、それではaタグで行っているのでそのままHTML文で表示されてしまう。
         そのためURL部分のみruby処理を行い、user.id部分を式展開#{}で行う-->
       </tr>
-      <% end %>
-      <%= paginate @users %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
