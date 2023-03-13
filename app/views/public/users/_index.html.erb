@@ -12,6 +12,9 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
+        <td><%= render 'public/relationships/follow_form', user: user %></td>
         <td><a href=<%= "users/#{user.id}/my_page" %>>show</a></td>
         <!--以前の設定ではusers/user.id/my_pageと設定していたが、それではaタグで行っているのでそのままHTML文で表示されてしまう。
         そのためURL部分のみruby処理を行い、user.id部分を式展開#{}で行う-->
