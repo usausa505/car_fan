@@ -13,10 +13,12 @@ class Public::RelationshipsController < ApplicationController
   def followings
     user = User.find(params[:user_id])
     @users = user.followings
+    @users = @users.page(params[:page]).per(10)
   end
 
   def followers
     user = User.find(params[:user_id])
     @users = user.followers
+    @users = @users.page(params[:page]).per(10)
   end
 end

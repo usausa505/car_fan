@@ -31,6 +31,7 @@ class Public::UsersController < ApplicationController
   def favorites
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
   end
 
   def confirm_withdraw

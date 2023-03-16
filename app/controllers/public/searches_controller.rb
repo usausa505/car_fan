@@ -6,10 +6,10 @@ class Public::SearchesController < ApplicationController
 
     if @range == "ユーザー"
       @users = User.looks(params[:search], params[:word])
-      @users = @users.page(params[:page])
+      @users = @users.page(params[:page]).per(10)
     else
       @posts = Post.looks(params[:search], params[:word])
-      @posts = @posts.page(params[:page])
+      @posts = @posts.page(params[:page]).per(10)
     end
 
   end
