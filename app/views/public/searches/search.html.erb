@@ -4,11 +4,11 @@
   <table class="table table-hover table-inverse">
     <% if @range == "ユーザー" %>
       <tbody>
-        <%= render 'users_index', users: @users %>
+        <%= render 'public/users/index', users: @users %>
       </tbody>
     <% else %>
       <tbody>
-        <%= render 'posts_index', posts: @posts %>
+        <%= render 'public/posts/index', posts: @posts %>
       </tbody>
     <% end %>
   </table>

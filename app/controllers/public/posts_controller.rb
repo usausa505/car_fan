@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     else
       @user = current_user
       @posts = Post.all
+      @posts = @posts.page(params[:page])
       render "index"
     end
   end

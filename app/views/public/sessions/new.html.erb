@@ -1,6 +1,7 @@
-<div class="container text-center", style="padding-top:120px; padding-bottom:70px;">
-  <div class="btn-wrapper col-3 mx-auto">
-    <h2><b>ログイン画面</b></h2>
+<div style="padding-top:70px; padding-bottom:70px;">
+  <div class="px-4 py-5 my-5 text-center">
+    <h2 class="display-5 fw-bold"><b>ログイン画面</b></h2>
+    <div class="col-lg-4 mx-auto">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field", style="padding-top:20px;">
         <%= f.label "メールアドレス" %>
@@ -10,7 +11,7 @@
         <%= f.label "パスワード" %>
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control" %>
       </div>
-      
+
       <% if devise_mapping.rememberable? %>
         <div class="field", style="padding-top:20px;">
           <%= f.check_box :remember_me %>
@@ -22,6 +23,7 @@
         <%= f.submit "ログイン", class: 'btn btn-primary' %>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
 <div class="text-right text-danger", style="padding-right:100px; padding-bottom:70px;">

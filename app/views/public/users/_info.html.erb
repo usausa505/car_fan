@@ -10,14 +10,14 @@
        	  <th><%= user.introduction %></th>
         </tr>
         <tr>
-          <th>follows</th>
+          <th>フォロー</th>
           <th>
             <%= link_to user_followings_path(user.id) do %>
               <%= user.followings.count %>
             <% end %>
           </th>
         <tr>
-          <th>followers</th>
+          <th>フォロワー</th>
           <th>
             <%= link_to user_followers_path(user.id) do %>
               <%= user.followers.count %>
@@ -28,7 +28,8 @@
 
       <div class='row'>
         <% if user == current_user %>
-          <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+          <%= link_to edit_user_path(user), class: "btn btn-secondary btn-block" do %>
+          <!--前に設定していたbtn-outoline^secondaryはカーソルが触れた際に色が変わるもの。背景色変更に伴いoutlineを削除-->
             <i class="fas fa-user-cog"></i> プロフィール編集へ
           <% end %>
           <!--他のユーザーにはいいねした投稿を表示させない-->
