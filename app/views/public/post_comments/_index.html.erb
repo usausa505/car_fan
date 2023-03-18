@@ -9,6 +9,13 @@
             <%= post_comment.user.name %>
           <% end %>
         </td>
+        <td>
+          <% if post_comment.post_comment_images.attached? %>
+            <% post_comment.post_comment_images.each_with_index do |image, i| %>
+              <%= image_tag post_comment.get_image[i], size:'50x50' %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= post_comment.comment %></td>
         <td>
           <% if post_comment.user == current_user %>
