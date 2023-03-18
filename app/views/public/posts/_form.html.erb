@@ -1,10 +1,12 @@
 <% if post.errors.any? %>
-  <%= post.errors.count %>error prohibited this obj from being saved:
+<div style="background-color:#FF3300; color:white;">
+  <%= post.errors.count %>件のエラーが生じています:
   <ul>
     <% post.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
+</div>
 <% end %>
 
 <%= form_with model: post, local: true do |f| %>

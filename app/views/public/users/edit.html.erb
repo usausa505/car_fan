@@ -1,6 +1,17 @@
 <div class='container'>
   <div class='row', style="padding-top:120px;">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <% if @user.errors.any? %>
+      <div style="background-color:#FF3300; color:white;">
+        <%= @user.errors.count %>件のエラーが生じています:
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
       <% if @user.email == 'guest@sample.com'%>
         <h2 style="color:red;"><b>ゲストユーザーはユーザー情報の編集ができません。</b></h2>
       <% else %>
@@ -8,7 +19,7 @@
         <%= form_with model: @user, local:true do |f| %>
           <%= render 'layouts/errors', obj: @user %>
           <div class="form-group">
-            <%= f.label "名前" %>
+            <%= f.label "ユーザー名" %>
             <%= f.text_field :name, class: "form-control name" %>
           </div>
           <div class="form-group">
@@ -22,7 +33,7 @@
           <div class="form-group">
             <%= f.submit "更新する", class: 'btn btn-success' %>
           </div>
-          <div class="form-group">
+          <div class="form-group", style="padding-bottom:70px;">
             <a class="btn btn-danger" data-method="get" href="<%= confirm_withdraw_path %>">退会する</a>
           </div>
         <% end %>
