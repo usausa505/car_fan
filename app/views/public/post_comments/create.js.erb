@@ -1,2 +1,3 @@
-$('.post-comments-index').html("<%= j(render 'public/post_comments/index', post: @comment.post) %>")
+<!--@commentの部分を、@post_commentに変更(バリデーションエラーメッセージに対応させるため)。3/19-->
+$('.post-comments-index').html("<%= j(render 'public/post_comments/index', post: @post_comment.post) %>")
 $("textarea").val('');

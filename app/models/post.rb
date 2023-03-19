@@ -47,7 +47,7 @@ class Post < ApplicationRecord
 
   def validate_number_of_files
     return if images.length <= FILE_NUMBER_LIMIT
-    errors.add(:images, "に添付できる画像は#{FILE_NUMBER_LIMIT}件までです。")
+    errors.add(:images, "は#{FILE_NUMBER_LIMIT}枚までしか投稿できません。")
   end
 
 end

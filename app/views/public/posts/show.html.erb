@@ -49,7 +49,12 @@
         </tr>
         </tbody>
       </table>
-      <div class="post-comments-index"><%= render "public/post_comments/index", post: @post, post_comment: @post_comment %></div>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", post: @post, post_comment: @post_comment %>
+      </div>
+      <div id="comments_error">
+        <%= render 'public/post_comments/errors', post_comment: @post_comment %>
+      </div>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>

@@ -17,7 +17,6 @@
       <% else %>
         <h2>プロフィール編集</h2>
         <%= form_with model: @user, local:true do |f| %>
-          <%= render 'layouts/errors', obj: @user %>
           <div class="form-group">
             <%= f.label "ユーザー名" %>
             <%= f.text_field :name, class: "form-control name" %>
