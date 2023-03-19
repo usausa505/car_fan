@@ -1,6 +1,5 @@
 <div style="padding-top:200px; padding-bottom:70px;">
       <%= form_with model: @user, url: admin_user_path, method: :patch, local:true do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
         <table class="table table-borderless">
           <tbody>
             <tr>

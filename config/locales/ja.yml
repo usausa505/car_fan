@@ -13,3 +13,8 @@ ja:
         title: タイトル
         body: 本文
         images: 画像
+      post_comment:
+        comment: コメント
+        post_comment_images: 画像
+      session: 
+        

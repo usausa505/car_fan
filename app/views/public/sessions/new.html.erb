@@ -2,27 +2,21 @@
   <div class="px-4 py-5 my-5 text-center">
     <h2 class="display-5 fw-bold"><b>ログイン画面</b></h2>
     <div class="col-lg-4 mx-auto">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field", style="padding-top:20px;">
-        <%= f.label "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
-      </div>
-      <div class="field", style="padding-top:20px;">
-        <%= f.label "パスワード" %>
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control" %>
-      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
 
-      <% if devise_mapping.rememberable? %>
         <div class="field", style="padding-top:20px;">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+        </div>
+        <div class="field", style="padding-top:20px;">
+          <%= f.label "パスワード" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control" %>
+        </div>
+        <div class="actions", style="padding-top:20px;">
+          <%= f.submit "ログイン", class: 'btn btn-primary' %>
         </div>
       <% end %>
-
-      <div class="actions", style="padding-top:20px;">
-        <%= f.submit "ログイン", class: 'btn btn-primary' %>
-      </div>
-    <% end %>
     </div>
   </div>
 </div>

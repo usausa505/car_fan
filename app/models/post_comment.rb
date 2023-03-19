@@ -17,7 +17,7 @@ class PostComment < ApplicationRecord
 
   def validate_number_of_files
     return if post_comment_images.length <= FILE_NUMBER_LIMIT
-    errors.add(:post_comment_images, "に添付できる画像は#{FILE_NUMBER_LIMIT}件までです。")
+    errors.add(:post_comment_images, "は#{FILE_NUMBER_LIMIT}枚までしか投稿できません")
   end
 
 end

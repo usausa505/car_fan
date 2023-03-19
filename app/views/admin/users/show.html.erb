@@ -10,6 +10,10 @@
 	        <th>自己紹介</th>
        	  <th><%= @user.introduction %></th>
         </tr>
+        <tr>
+	        <th>メールアドレス</th>
+       	  <th><%= @user.email %></th>
+        </tr>
         <th>会員ステータス</th>
           <% if @user.is_deleted == false %>
             <td><h5 class="text-success font-weight-bold">有効</h5></td>
