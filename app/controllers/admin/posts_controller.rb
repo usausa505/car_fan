@@ -1,8 +1,9 @@
 class Admin::PostsController < ApplicationController
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  # def edit
+  #   @post = Post.find(params[:id])
+  # end
+  #編集する必要はないため、削除
 
   def index
     @posts = Post.page(params[:page]).per(10)

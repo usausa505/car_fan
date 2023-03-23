@@ -1,7 +1,7 @@
 <table class="table">
   <h5><b>コメント一覧</b></h5>
   <tbody>
-      <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.each do |post_comment| %>
       <tr>
         <td>
           <%= link_to user_my_page_path(post_comment.user) do %>
@@ -24,6 +24,6 @@
           <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>

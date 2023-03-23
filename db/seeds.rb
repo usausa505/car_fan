@@ -85,6 +85,12 @@ post_data = Post.create!(
   body: 'バージョンSTいいよなぁ…高いけど'
 )
 
+post_data = Post.create!(
+  user_id: user.id,
+  title: 'Zのカスタムモデル',
+  body: 'そういえば日産クロッシングでカスタムモデルのZがあったような…'
+)
+
 user = User.find(4)
 
 post_data = Post.create!(
@@ -107,4 +113,10 @@ post_data = Post.create!(
   user_id: user.id,
   title: 'Zも良いよね',
   body: '同じ価格帯だと、Zも普通にカッコイイんだよなぁ'
+)
+
+post_data = Post.create!(
+  user_id: user.id,
+  title: 'GRGarageについて',
+  body: 'そういえばこの間GRGarage行ったとき、80スープラもいたんだよなぁ'
 )
