@@ -14,26 +14,24 @@
       <% if @favorite_posts.present? %>
         <% @favorite_posts.each do |post| %>
       <!--↑上記postsはrenderのインスタンス変数で対応、以下postは|post|によって対応-->
-        <tr>
-          <td>
-            <%= link_to user_my_page_path(post.user) do %>
-              <%= image_tag post.user.get_profile_image, size:'50x50' %>
-              <%= post.user.name %>
-            <% end %>
-          </td>
-          <td>
-            <% if post.images.attached? %>
-              <% post.images.each_with_index do |image, i| %>
-                <%= image_tag post.get_image[i], size:'50x50' %>
+          <tr>
+            <td>
+              <%= link_to user_my_page_path(post.user) do %>
+                <%= image_tag post.user.get_profile_image, size:'50x50' %>
+                <%= post.user.name %>
               <% end %>
-            <% end %>
-          </td>
-          <td><%= link_to post.title, post %></td>
-          <td><%= post.body %></td>
-          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-        </tr>
+            </td>
+            <td>
+              <% if post.images.attached? %>
+                <% post.images.each_with_index do |image, i| %>
+                  <%= image_tag post.get_image[i], size:'50x50' %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to post.title, post %></td>
+            <td><%= post.body %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
         <% end %>
       <% end %>
     </tbody>

@@ -1,18 +1,18 @@
 <div style="padding-top:200px; padding-bottom:70px;">
-      <%= form_with model: @user, url: admin_user_path, method: :patch, local:true do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td><h2><b>ユーザーステータス</b></h2></td>
-              <td>
-                <%= f.radio_button :is_deleted, :false %>
-                <%= f.label :"有効" %>
-                <%= f.radio_button :is_deleted, :true %>
-                <%= f.label :"退会" %>
-              </td>
-            </tr>
-          <td><%= f.submit "  変更を保存  ", class: 'btn btn-success' %></td>
-          </tbody>
-        </table>
-      <% end %>
+  <%= form_with model: @user, url: admin_user_path, method: :patch, local:true do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td><h2><b>ユーザーステータス</b></h2></td>
+          <td>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :"有効" %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :"退会" %>
+          </td>
+        </tr>
+      <td><%= f.submit "  変更を保存  ", class: 'btn btn-success' %></td>
+      </tbody>
+    </table>
+  <% end %>
 </div>

@@ -25,5 +25,4 @@ class Admin::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, images: [])
   end
 
-
 end

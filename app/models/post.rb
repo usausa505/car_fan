@@ -6,11 +6,10 @@ class Post < ApplicationRecord
 
   FILE_NUMBER_LIMIT = 4
   validate :validate_number_of_files
-
+  #投稿できる画像を制限する記述
 
   has_many_attached :images
   has_many :post_comments, dependent: :destroy
-
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
@@ -25,11 +24,8 @@ class Post < ApplicationRecord
     elsif search == "partial"
       @Post = Post.where("title LIKE?","%#{word}%")
     else
-      @Post = Post.all
     end
   end
-
-
 
   def get_image
     unless images.attached?
@@ -49,5 +45,6 @@ class Post < ApplicationRecord
     return if images.length <= FILE_NUMBER_LIMIT
     errors.add(:images, "は#{FILE_NUMBER_LIMIT}枚までしか投稿できません")
   end
+  #投稿できる画像を制限するメソッド
 
 end

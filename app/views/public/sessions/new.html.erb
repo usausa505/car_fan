@@ -4,7 +4,6 @@
     <div class="col-lg-4 mx-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
-
         <div class="field", style="padding-top:20px;">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>

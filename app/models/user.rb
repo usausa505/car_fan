@@ -28,11 +28,8 @@ class User < ApplicationRecord
     elsif search == "partial"
       @user = User.where("name LIKE?","%#{word}%")
     else
-      @user = User.all
     end
   end
-
-
 
   def follow(user_id)
     relationships.create(followed_id: user_id)

@@ -21,32 +21,32 @@
           </tr>
         </thead>
   		  <tbody>
-  		  <tr>
-          <td>
-            <%= link_to user_my_page_path(@post.user) do %>
-            <!--@post.userのままだと、users/1となりエラーになるので、今回のusers#showであるuser_my_page_pathを挟む必要がある-->
-              <%= image_tag @post.user.get_profile_image, size:"50x50" %><br>
-              <%= @post.user.name %>
-            <% end %>
-          </td>
-          <td>
-            <% if @post.images.attached? %>
-              <% @post.images.each_with_index do |image, i| %>
-              <!--each_with_indexメソッドはeachループで回しつつ、それぞれのデータに番号を振りたいときに使うもの-->
-                <%= image_tag @post.get_image[i], size:'100x100' %>
+    		  <tr>
+            <td>
+              <%= link_to user_my_page_path(@post.user) do %>
+              <!--@post.userのままだと、users/1となりエラーになるので、今回のusers#showであるuser_my_page_pathを挟む必要がある-->
+                <%= image_tag @post.user.get_profile_image, size:"50x50" %><br>
+                <%= @post.user.name %>
               <% end %>
+            </td>
+            <td>
+              <% if @post.images.attached? %>
+                <% @post.images.each_with_index do |image, i| %>
+                <!--each_with_indexメソッドはeachループで回しつつ、それぞれのデータに番号を振りたいときに使うもの-->
+                  <%= image_tag @post.get_image[i], size:'100x100' %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to @post.title, @post %></td>
+            <td><%= @post.body %></td>
+            <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+            <td id="favorite_buttons_<%= @post.id %>"><%= render 'public/favorites/favorite', post: @post %></td>
+            <td>コメント数: <%= @post.post_comments.count %></td>
+            <% if @post.user == current_user %>
+              <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to '削除する', @post, method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%></td>
             <% end %>
-          </td>
-          <td><%= link_to @post.title, @post %></td>
-          <td><%= @post.body %></td>
-          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-          <td id="favorite_buttons_<%= @post.id %>"><%= render 'public/favorites/favorite', post: @post %></td>
-          <td>コメント数: <%= @post.post_comments.count %></td>
-          <% if @post.user == current_user %>
-            <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除する', @post, method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%></td>
-          <% end %>
-        </tr>
+          </tr>
         </tbody>
       </table>
       <div class="post-comments-index">

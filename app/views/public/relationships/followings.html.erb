@@ -3,10 +3,10 @@
   <h1>フォロー一覧</h1>
     <thead>
       <tr>
-        <th>image</th>
-        <th>name</th>
-        <th>follow</th>
-        <th>follower</th>
+        <th>画像</th>
+        <th>ユーザー名</th>
+        <th>フォロー</th>
+        <th>フォロワー</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
           </tr>
         <% end %>
       <% else %>
-        <p>ユーザーはいません</p>
+        <p><b>フォローしている人はいません</b></p>
       <% end %>
     </tbody>
     <%= paginate @users %>
