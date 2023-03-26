@@ -56,6 +56,7 @@ class Public::PostsController < ApplicationController
 
   def login_is_needed
     redirect_to root_path if current_user.nil?
+    flash[:notice] = "ログインしてください"
   end
 
   def is_matching_login_user_on_post
