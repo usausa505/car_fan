@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, if: :user_url
 
   def show
     @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user != current_user
-      redirect_to user_path(current_user.id)
+      redirect_to user_my_page_path(current_user.id)
     end
   end
 
@@ -50,12 +50,9 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)
   end
 
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
+  def user_url
+    request.fullpath.include?("/users")
+    flash[:notice] = "ログインしてください"
   end
-
 
 end

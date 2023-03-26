@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_user!, if: :user_url
 
   def create
     current_user.follow(params[:user_id])
@@ -21,4 +22,12 @@ class Public::RelationshipsController < ApplicationController
     @users = user.followers
     @users = @users.page(params[:page]).per(10)
   end
+  
+  private
+
+  def user_url
+    request.fullpath.include?("/users")
+    flash[:notice] = "ログインしてください"
+  end
+
 end

@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
-
-  before_action :is_matching_login_user_on_post, only: [:edit, :update, :destroy]
+  before_action :login_is_needed
+  before_action :is_matching_login_user_on_post, only: [:edit]
 
   def create
     @post = Post.new(post_params)
@@ -54,11 +54,15 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, images: [])
   end
 
+  def login_is_needed
+    redirect_to root_path if current_user.nil?
+  end
+
   def is_matching_login_user_on_post
     @post = Post.find(params[:id])
     @user = @post.user
-    unless @user == current_user
-      redirect_to posts_path
+    if @user != current_user
+      redirect_to posts_path, notice: '投稿編集は投稿した本人のみ可能です'
     end
   end
 
