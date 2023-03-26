@@ -56,7 +56,6 @@ class Public::UsersController < ApplicationController
 
   def user_url
     request.fullpath.include?("/users")
-    flash[:notice] = "ログインしてください"
   end
 
 end
