@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    unless post_existed?
+    unless post_existed?　#3/28修正(詳細は70行目参照)
       @post = Post.find(params[:id])
       @new_post = Post.new
       @user = @post.user
@@ -67,6 +67,7 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  #存在しない投稿のURLにアクセスした場合、ユーザー一覧に戻る(3/28追加)
   def post_existed?
     unless Post.find_by(id: params[:id])
       redirect_to posts_path

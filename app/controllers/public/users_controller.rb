@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, if: :user_url
 
   def show
-    unless user_existed?
-      @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
+    @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
+    unless user_existed? #3/28に修正
       @posts = @user.posts.page(params[:page]).per(10)
       @post = Post.new
     end
@@ -31,7 +31,7 @@ class Public::UsersController < ApplicationController
   end
 
   def favorites
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id]) #3/28 User.find(params[:id])から現在のものに修正(詳細は64行目参照)
     if @user == current_user
       favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
       @favorite_posts = Post.find(favorites)
@@ -61,6 +61,7 @@ class Public::UsersController < ApplicationController
     request.fullpath.include?("/users")
   end
 
+  #存在しないユーザーのURLにアクセスした場合、ユーザー一覧に戻る(3/28追加)
   def user_existed?
     unless User.find_by(id: params[:user_id])
       redirect_to users_path
