@@ -31,7 +31,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     if @user == current_user
-      favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+      favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
       @favorite_posts = Post.find(favorites)
       @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
     else
