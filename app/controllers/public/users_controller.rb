@@ -2,9 +2,11 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, if: :user_url
 
   def show
-    @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
-    @posts = @user.posts.page(params[:page]).per(10)
-    @post = Post.new
+    unless user_existed?
+      @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
+      @posts = @user.posts.page(params[:page]).per(10)
+      @post = Post.new
+    end
   end
 
   def index
@@ -59,4 +61,9 @@ class Public::UsersController < ApplicationController
     request.fullpath.include?("/users")
   end
 
+  def user_existed?
+    unless User.find_by(id: params[:user_id])
+      redirect_to users_path
+    end
+  end
 end
