@@ -22,12 +22,11 @@ class Public::RelationshipsController < ApplicationController
     @users = user.followers
     @users = @users.page(params[:page]).per(10)
   end
-  
+
   private
 
   def user_url
     request.fullpath.include?("/users")
-    flash[:notice] = "ログインしてください"
   end
 
 end
