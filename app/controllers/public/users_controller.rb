@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, if: :user_url
 
   def show
-    @user = User.find(params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
+    @user = User.find_by(id: params[:user_id]) #←viewファイル(users/_index.html.erb)変更に伴い、:idから:user_idに変更
     unless user_existed? #3/28に修正
       @posts = @user.posts.page(params[:page]).per(10)
       @post = Post.new
@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     if @user != current_user
       redirect_to user_my_page_path(current_user.id)
     end
