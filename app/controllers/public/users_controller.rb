@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id]) #存在しないユーザーURLにも対応するため、id:を追加
     if @user != current_user
       redirect_to user_my_page_path(current_user.id)
     end
