@@ -1,0 +1,29 @@
+<table class="table">
+  <h5><b>コメント一覧</b></h5>
+  <tbody>
+    <% post.post_comments.each do |post_comment| %>
+      <tr>
+        <td>
+          <%= link_to admin_user_path(post_comment.user) do %>
+            <%= image_tag post_comment.user.get_profile_image, size: "50x50" %><br>
+            <%= post_comment.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if post_comment.post_comment_images.attached? %>
+            <% post_comment.post_comment_images.each_with_index do |image, i| %>
+              <%= image_tag post_comment.get_image[i], size:'50x50' %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td>
+          <% if admin_signed_in? %>
+            <%= link_to "削除する", admin_post_post_comment_path(post, post_comment), method: :delete, remote: true,
+            data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
