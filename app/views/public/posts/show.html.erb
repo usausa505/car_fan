@@ -33,13 +33,16 @@
               <% if @post.images.attached? %>
                 <% @post.images.each_with_index do |image, i| %>
                 <!--each_with_indexメソッドはeachループで回しつつ、それぞれのデータに番号を振りたいときに使うもの-->
-                  <%= image_tag @post.get_image[i], size:'100x100' %>
+                  <%= link_to url_for(@post.get_image[i]) do %>
+                    <%= image_tag @post.get_image[i], size:'100x100' %>
+                  <% end %>
                 <% end %>
               <% end %>
             </td>
             <td><%= link_to @post.title, @post %></td>
             <td><%= @post.body %></td>
-            <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <!--5/8投稿時間を時間単位まで拡大-->
             <td id="favorite_buttons_<%= @post.id %>"><%= render 'public/favorites/favorite', post: @post %></td>
             <td>コメント数: <%= @post.post_comments.count %></td>
             <% if @post.user == current_user %>

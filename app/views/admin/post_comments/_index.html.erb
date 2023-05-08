@@ -17,6 +17,8 @@
           <% end %>
         </td>
         <td><%= post_comment.comment %></td>
+        <td><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <!--5/8投稿時間を表示するように設定-->
         <td>
           <% if admin_signed_in? %>
             <%= link_to "削除する", admin_post_post_comment_path(post, post_comment), method: :delete, remote: true,

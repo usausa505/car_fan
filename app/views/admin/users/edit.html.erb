@@ -6,9 +6,10 @@
           <td><h2><b>ユーザーステータス</b></h2></td>
           <td>
             <%= f.radio_button :is_deleted, :false %>
-            <%= f.label :"有効" %>
+            <%= f.label :is_deleted, :"有効", value: false %>
             <%= f.radio_button :is_deleted, :true %>
-            <%= f.label :"停止" %>
+            <%= f.label :is_deleted, :"停止", value: true %>
+            <!--5/8設定変更：クリックするとボタンが反応するように変更-->
           </td>
         </tr>
       <td><%= f.submit "  変更を保存  ", class: 'btn btn-success' %></td>

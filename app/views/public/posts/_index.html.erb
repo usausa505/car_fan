@@ -30,7 +30,8 @@
         <td><%= post.body %></td>
         <td id="favorite_buttons_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></td>
         <td>コメント数: <%= post.post_comments.count %></td>
-        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <!--5/8投稿時間を時間単位まで拡大-->
       </tr>
     <% end %>
   </tbody>
